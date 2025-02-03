@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views import View
 from .forms import PageForm
+from .models import Page
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
@@ -24,7 +25,12 @@ class PageCreateView(View):
             return redirect("diary:index")
         return render(request, "diary/page_form.html", {"form": form})
 
+class PageListView(View):
+    def get(self, request):
+        page_list = Page.objects.order_by("-page_date")
+        return render(request, "diary/page_list.html", {"page_list": page_list})
 
 index = IndexView.as_view()
 page_create = PageCreateView.as_view()
+page_list = PageListView.as_view()
 
