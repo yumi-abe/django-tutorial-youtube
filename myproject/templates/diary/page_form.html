@@ -8,7 +8,7 @@
   <body>
     <h1>日記を書く</h1>
     <form action="" method="POST">
-      {% csrf_token %} {{ from.as_p }}
+      {% csrf_token %} {{ form.as_p }}
       <button type="submit">保存</button>
     </form>
   </body>
