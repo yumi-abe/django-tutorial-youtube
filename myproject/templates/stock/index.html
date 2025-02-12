@@ -1,0 +1,92 @@
+{% extends 'base/stock_base.html' %}
+<!---->
+{% block body %}
+<div class="heading">
+  <div class="title">1月優待</div>
+  <div class="wrapper">
+    <div class="container">
+      <p>権利付き最終日</p>
+      <p>1月29日</p>
+    </div>
+    <div class="container">
+      <p>権利落ち日</p>
+      <p>1月30日</p>
+    </div>
+  </div>
+</div>
+
+<h1>クロス取引手数料計算</h1>
+<form method="POST">
+  {% csrf_token %}
+  <div class="form-container">
+    <div class="input-group">
+      <label for="code" class="input-label">企業コード</label>
+      <input id="code" name="code" type="text" class="input-field" />
+    </div>
+    <button type="submit" name="action" value="search" class="search-button">
+      検索
+    </button>
+  </div>
+  <div class="message">
+    <!-- <p>すかいらーくホールディングス</p> -->
+    {% if result %} {{ result.stock_price }} {% endif %}
+  </div>
+</form>
+<form>
+  {% csrf_token %}
+  <div class="form-container">
+    <div class="input-group">
+      <label for="price" class="input-label">株価</label>
+      <input
+        id="price"
+        name="price"
+        type="text"
+        class="input-field"
+        value="{{ result.stock_price }}"
+      />
+    </div>
+  </div>
+  <div class="form-container">
+    <div class="input-group">
+      <label for="quantity" class="input-label">株数</label>
+      <select name="quantity" id="quantity" class="input-field">
+        <option value=""></option>
+        {% comment %} {% for quantity_option in quantity_options %}
+        <option value="{{ quantity_option }}">{{ quantity_option }}</option>
+        {% endfor %} {% endcomment %}
+        <option value="100">100</option>
+        <option value="200">200</option>
+        <option value="300">300</option>
+        <option value="400">400</option>
+        <option value="500">500</option>
+        <option value="600">600</option>
+        <option value="700">700</option>
+        <option value="800">800</option>
+        <option value="900">900</option>
+        <option value="1000">1000</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-container">
+    <div class="input-group">
+      <label for="quantity" class="input-label">注文日</label>
+      <input type="date" class="input-field" />
+    </div>
+  </div>
+  <div class="form-container">
+    <div class="input-group">
+      <label for="get_month" class="input-label">権利月</label>
+      <select name="get_month" id="get_month" class="input-field month">
+        <option value=""></option>
+        {% for month_option in month_options %}
+        <option value="{{ month_option }}">{{ month_option }}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </div>
+  <button type="submit" name="action" value="calc" class="search-button">
+    計算する
+  </button>
+</form>
+
+{% endblock %}

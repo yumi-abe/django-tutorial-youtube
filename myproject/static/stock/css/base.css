@@ -1,0 +1,18 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #495ba6;
+  border-radius: 10px;
+  color: white;
+  margin-bottom: 20px;
+}
+
+header a {
+  text-decoration: none;
+  color: #495ba6;
+  padding: 5px 8px;
+  background-color: white;
+  border-radius: 10px;
+}

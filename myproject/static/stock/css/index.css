@@ -1,0 +1,110 @@
+.heading {
+  width: 60%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #c3b7b7;
+  border-radius: 10px;
+}
+
+.heading .title {
+  padding: 10px 0;
+  width: 100%;
+  text-align: center;
+  color: white;
+  background-color: #80b6f8;
+  border-radius: 10px 10px 0 0;
+}
+
+.heading p {
+  margin: 0;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 10px 0;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+}
+
+.container p:first-child {
+  text-align: left;
+  width: 150px;
+}
+
+/* 手数料計算 */
+h1 {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+form p {
+  margin: 0;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.input-group {
+  display: flex;
+  overflow: hidden;
+  border: 1px solid #80b6f8;
+  border-radius: 8px;
+}
+
+.input-label {
+  width: 120px;
+  text-align: center;
+  background-color: #80b6f8;
+  color: white;
+  padding: 8px 12px;
+  border-right: 1px solid #80b6f8;
+}
+
+.input-field {
+  border: none;
+  padding: 8px 12px;
+  flex: 1;
+  min-width: 200px;
+}
+select {
+  width: 224px;
+}
+
+.input-field:focus {
+  outline: none;
+}
+
+.search-button {
+  color: white;
+  padding: 8px 16px;
+  background-color: #495ba6;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 480px) {
+  .heading {
+    width: 70%;
+  }
+}
