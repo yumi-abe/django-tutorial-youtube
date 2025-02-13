@@ -1,4 +1,4 @@
-{% extends 'base/stock_base.html' %}
+{% extends 'base/stock_base.html' %} {% load humanize %}
 <!---->
 {% block body %}
 <div class="heading">
@@ -17,19 +17,30 @@
 
 <h1>クロス取引手数料計算</h1>
 <form method="POST">
-  {% csrf_token %}
-  <div class="form-container">
+  {% csrf_token %} {% if result %}
+  <div class="message">
+    <h2>検索結果</h2>
+    <p>{{ result.message }}</p>
+    {% if not result.message %}
+    <p>{{ result.stock_name }}</p>
+    <p>{{ result.stock_price | intcomma }}円</p>
+    {% endif %}
+  </div>
+  {% endif %}
+  <div class="form-flex-container">
     <div class="input-group">
-      <label for="code" class="input-label">企業コード</label>
-      <input id="code" name="code" type="text" class="input-field" />
+      <label for="code" class="flex-input-label">企業コード</label>
+      <input
+        id="code"
+        name="code"
+        type="text"
+        class="flex-input-field"
+        value="{{ request.POST.code }}"
+      />
     </div>
-    <button type="submit" name="action" value="search" class="search-button">
+    <button type="submit" name="action" value="search" class="button">
       検索
     </button>
-  </div>
-  <div class="message">
-    <!-- <p>すかいらーくホールディングス</p> -->
-    {% if result %} {{ result.stock_price }} {% endif %}
   </div>
 </form>
 <form>
@@ -84,7 +95,7 @@
       </select>
     </div>
   </div>
-  <button type="submit" name="action" value="calc" class="search-button">
+  <button type="submit" name="action" value="calc" class="button">
     計算する
   </button>
 </form>

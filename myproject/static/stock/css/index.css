@@ -64,6 +64,14 @@ form p {
   gap: 12px;
 }
 
+.form-flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
 .input-group {
   display: flex;
   overflow: hidden;
@@ -72,7 +80,16 @@ form p {
 }
 
 .input-label {
-  width: 120px;
+  width: 100px;
+  text-align: center;
+  background-color: #80b6f8;
+  color: white;
+  padding: 8px 12px;
+  border-right: 1px solid #80b6f8;
+}
+
+.flex-input-label {
+  width: 80px;
   text-align: center;
   background-color: #80b6f8;
   color: white;
@@ -86,6 +103,14 @@ form p {
   flex: 1;
   min-width: 200px;
 }
+
+.flex-input-field {
+  border: none;
+  padding: 8px 12px;
+  flex: 1;
+  width: 150px;
+}
+
 select {
   width: 224px;
 }
@@ -94,13 +119,34 @@ select {
   outline: none;
 }
 
-.search-button {
+.button {
   color: white;
   padding: 8px 16px;
   background-color: #495ba6;
   border: none;
   border-radius: 8px;
   cursor: pointer;
+}
+
+.message {
+  margin: 15px auto;
+  background-color: #dbdddd;
+  border-radius: 8px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.message h2 {
+  margin-top: 0;
+  font-size: 15px;
+  color: #333;
+}
+
+.message p {
+  font-size: 14px;
+  color: #666;
 }
 
 @media screen and (max-width: 480px) {

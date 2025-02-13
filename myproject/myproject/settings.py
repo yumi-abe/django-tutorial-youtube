@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     'diary.apps.DiaryConfig',
+    'stock'
 ]
 
 MIDDLEWARE = [
@@ -134,3 +136,5 @@ LOGOUT_REDIRECT_URL = "/login/"
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
+
+NUMBER_GROUPING = 3
