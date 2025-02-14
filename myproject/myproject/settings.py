@@ -37,7 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
+    'widget_tweaks',
     'diary.apps.DiaryConfig',
+    'stock'
 ]
 
 MIDDLEWARE = [
@@ -110,7 +113,8 @@ TIME_ZONE = 'Asia/Tokyo'
 
 USE_I18N = True
 
-USE_TZ = True
+USE_TZ = False
+# 非推奨だが、取得した日付を登録すると1日ずれてしまうため、Falseにしておく
 
 
 # Static files (CSS, JavaScript, Images)
@@ -134,3 +138,5 @@ LOGOUT_REDIRECT_URL = "/login/"
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
+
+NUMBER_GROUPING = 3

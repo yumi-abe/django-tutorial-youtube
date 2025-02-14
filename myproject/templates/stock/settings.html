@@ -1,0 +1,72 @@
+{% extends 'base/stock_base.html' %}
+<!---->
+{% block body %}
+<!---->
+{% if message %}
+<div class="message">
+  <h2>message</h2>
+  <p>{{ message }}</p>
+</div>
+{% endif %}
+
+<div class="heading">
+  <div class="title">データ更新状況</div>
+  <div class="wrapper">
+    <div class="container">
+      <p>銘柄情報</p>
+      <p>{{ stock_data.updated_at }}</p>
+    </div>
+    <div class="container">
+      <p>カレンダー</p>
+      <p>{{ calendar_data.updated_at }}</p>
+    </div>
+  </div>
+</div>
+
+<div class="button-wrapper">
+  <form method="POST">
+    {% csrf_token %}
+    <button class="button" type="submit" name="get_stock_info">
+      銘柄情報を取得する
+    </button>
+  </form>
+  <form method="POST">
+    {% csrf_token %}
+    <button class="button" type="submit" name="calendar">
+      カレンダーを更新する
+    </button>
+  </form>
+</div>
+
+<form method="POST">
+  {% csrf_token %}
+  <div class="search-container">
+    <div class="input-group">
+      <label for="code" class="input-label">銘柄コード</label>
+      <input
+        id="code"
+        type="text"
+        name="code"
+        class="input-field"
+        value="{{ request.POST.code }}"
+      />
+    </div>
+    <button type="submit" name="search" class="button">検索</button>
+  </div>
+</form>
+{% if result %}
+<div class="text-center">
+  <div class="message">
+    <h2>検索結果</h2>
+    <p>{{ result.message }}</p>
+    {% if not result.message %}
+    <p>銘柄コード：{{ result.code }}</p>
+    <p>銘柄名：{{ result.stock_name }}</p>
+    <p>更新日：{{ result.updated_at }}</p>
+    {% endif %}
+  </div>
+</div>
+
+{% endif %}
+<!---->
+{% endblock %}

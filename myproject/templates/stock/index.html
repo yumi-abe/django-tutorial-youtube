@@ -1,0 +1,99 @@
+{% extends 'base/stock_base.html' %}
+<!---->
+{% load humanize %}
+<!---->
+{% load widget_tweaks %}
+<!---->
+{% block body %}
+<div class="heading">
+  <div class="title">1月優待</div>
+  <div class="wrapper">
+    <div class="container border-bottom">
+      <p>権利付き最終日<br /><small>※株を持っておく</small></p>
+      <p>{{ cross_day.get_date }}</p>
+    </div>
+    <div class="container">
+      <p>権利落ち日<br /><small>※株を売る日</small></p>
+      <p>{{ cross_day.ex_date }}</p>
+    </div>
+  </div>
+</div>
+
+<h1>クロス取引手数料計算</h1>
+<form method="POST">
+  {% csrf_token %}
+  <!---->
+
+  <div class="form-flex-container">
+    <div class="input-group">
+      <label for="code" class="flex-input-label">企業コード</label>
+      <input
+        id="code"
+        name="code"
+        type="text"
+        class="flex-input-field"
+        value="{{ request.POST.code }}"
+      />
+    </div>
+    <button type="submit" name="search" class="button">検索</button>
+  </div>
+</form>
+{% if result %}
+<div class="message">
+  <p>{{ result.message }}</p>
+  {% if not result.message %}
+  <p>{{ result.stock_name }} : {{ result.stock_price | intcomma }}円</p>
+  {% endif %}
+</div>
+{% endif %}
+<!---->
+{% load widget_tweaks %}
+
+<form method="POST">
+  {% csrf_token %}
+  <div class="form-container">
+    <div class="input-group">
+      <label for="{{ form.price.id_for_label }}" class="input-label"
+        >株価</label
+      >
+      {% render_field form.price class="input-field" value=result.stock_price %}
+    </div>
+  </div>
+  <div class="form-container">
+    <div class="input-group">
+      <label for="{{ form.quantity.id_for_label }}" class="input-label"
+        >株数</label
+      >
+      {% render_field form.quantity class="input-field" %}
+    </div>
+  </div>
+  <div class="form-container">
+    <div class="input-group">
+      <label for="{{ form.date.id_for_label }}" class="input-label"
+        >注文日</label
+      >
+      {% render_field form.date class="input-field" %}
+    </div>
+  </div>
+  <div class="form-container">
+    <div class="input-group">
+      <label for="{{ form.get_month.id_for_label }}" class="input-label"
+        >権利月</label
+      >
+      {% render_field form.get_month class="input-field" %}
+    </div>
+  </div>
+  <button type="submit" name="calc" class="button">計算する</button>
+</form>
+{% if fee %}
+<div class="message">
+  <h2>計算結果</h2>
+  <p>保有日数:{{ fee.delta }}日</p>
+  <p>信用買手数料：{{ fee.buy_fee }}円</p>
+  <p>信用売手数料：{{ fee.sell_fee }}円</p>
+  <p>手数料合計：{{ fee.total_fee }}円</p>
+</div>
+{% endif %}
+<!---->
+
+{% endblock %}
