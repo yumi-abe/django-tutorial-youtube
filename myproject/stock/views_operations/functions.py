@@ -29,7 +29,7 @@ def get_cross_day(month:int) -> Dict[str, date]:
         closed_days = [dt.date() for dt in calendar]
         businessDayCalculator = BusinessDayCalculator(closed_days)
         cross_day = {}
-
+        cross_day["month"] = month
         # 権利確定日(決算月の月末営業日)
         confirmed_date = businessDayCalculator.last_business_day(month)
         cross_day["confirmed_date"] = confirmed_date
