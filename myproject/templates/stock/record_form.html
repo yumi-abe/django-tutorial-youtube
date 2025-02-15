@@ -1,0 +1,11 @@
+{% extends 'base/stock_base.html' %}
+<!---->
+{% block body %}
+<h1>新規投稿</h1>
+<form method="post">
+  {% csrf_token %} {{ form.as_p }}
+  <button type="submit">投稿</button>
+  <a href="{% url 'stock:record' %}">戻る</a>
+</form>
+
+{% endblock %}

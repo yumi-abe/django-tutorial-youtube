@@ -1,0 +1,14 @@
+{% extends 'base/stock_base.html' %}
+<!---->
+{% block body %}
+<h1>記録一覧</h1>
+<ul>
+  {% for record in records %}
+  <li>
+    <a href="{% url 'stock:record_detail' record.id %}">{{ record.title }}</a>
+  </li>
+  {% endfor %}
+</ul>
+<a href="{% url 'stock:record_create' %}">記録する</a>
+
+{% endblock %}

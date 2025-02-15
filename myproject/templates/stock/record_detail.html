@@ -1,0 +1,17 @@
+{% extends 'base/stock_base.html' %}
+<!---->
+{% block body %}
+<h1>記録詳細</h1>
+<h2>{{ record.title }}</h2>
+<p>{{ record.created_at }}</p>
+<p>{{ record.code }}</p>
+<p>{{ record.stock_name }}</p>
+{% if record.timing == 1 %}
+<p>早い</p>
+{% elif record.timing == 2 %}
+<p>遅い</p>
+{% endif %}
+<a href="{% url 'stock:record_edit' record.id %}">編集</a>
+<a href="{% url 'stock:record_delete' record.id %}">削除</a>
+<a href="{% url 'stock:record' %}">戻る</a>
+{% endblock %}

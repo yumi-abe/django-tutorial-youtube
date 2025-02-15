@@ -1,0 +1,14 @@
+{% extends 'base/stock_base.html' %}
+<!---->
+{% block body %}
+<p>下記記録を削除します。</p>
+<p>{{ record.title }}</p>
+<p>{{ record.created_at }}</p>
+<p>{{ record.code }}</p>
+<p>{{ record.stock_name }}</p>
+<form method="POST">
+  {% csrf_token %}
+  <button type="submit">削除する</button>
+  <a href="{% url 'stock:record_detail' record.id %}">戻る</a>
+</form>
+{% endblock %}
