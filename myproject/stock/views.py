@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.views import View
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 from datetime import datetime
-from .models import StockInfo, Calendar
-from .forms import CalcForm
+from .models import StockInfo, Calendar, Record
+from .forms import CalcForm, RecordForm
 from .views_operations.stock_search import stock_search
 from .views_operations.get_stockInfo import GetStockInfo
 from .views_operations.CrossTradeCalculator import CrossTradeCaluculator
@@ -111,6 +113,34 @@ class SettingsView(View):
         if 'result' in locals():
             context['result'] = result
         return render(request, "stock/settings.html", context)
-        
+
+
+class RecordView(ListView):
+    model = Record
+    template_name = 'stock/record.html'
+    context_object_name = 'records'
+    
+class RecordDetailView(DetailView):
+    model = Record
+    template_name = 'stock/record_detail.html'
+    context_object_name = 'record'
+
+class RecordCreateView(CreateView):
+    model = Record
+    template_name = 'stock/record_form.html'
+    form_class = RecordForm
+    success_url = reverse_lazy('stock:record')
+
+class RecordUpdateView(UpdateView):
+    model = Record
+    template_name = 'stock/record_form.html'
+    form_class = RecordForm
+    success_url = reverse_lazy('stock:record')
+
+class RecordDeleteView(DeleteView):
+    model = Record
+    template_name = 'stock/record_confirm_delete.html'
+    success_url = reverse_lazy('stock:record')
+
 index = IndexView.as_view()
 settings = SettingsView.as_view()

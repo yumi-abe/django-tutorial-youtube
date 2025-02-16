@@ -17,6 +17,50 @@ header a {
   border-radius: 10px;
 }
 
+/* ボタンのスタイル */
+.button {
+  display: inline-block;
+  background-color: #495ba6;
+  color: white;
+  padding: 8px 16px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 12px;
+  text-decoration: none;
+  margin: 10px auto;
+  text-align: center;
+  border: none;
+}
+
+.button:hover {
+  background-color: #0d1c5a;
+}
+
+.custom-button {
+  display: inline-block;
+  background-color: #cfd2db;
+  color: white;
+  padding: 8px 16px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 12px;
+  text-decoration: none;
+  margin: 10px auto;
+  text-align: center;
+}
+
+.custom-button:hover {
+  background-color: #b9bdc7;
+}
+
+.delete {
+  background-color: #e47078;
+}
+
+.delete:hover {
+  background-color: #cd4148;
+}
+
 .text-center {
   text-align: center;
 }

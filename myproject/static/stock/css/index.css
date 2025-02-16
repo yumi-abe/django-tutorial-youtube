@@ -128,15 +128,6 @@ select {
   outline: none;
 }
 
-.button {
-  color: white;
-  padding: 8px 16px;
-  background-color: #495ba6;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
 .message {
   margin: 15px auto;
   background-color: #dbdddd;

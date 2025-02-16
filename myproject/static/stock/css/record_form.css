@@ -1,0 +1,45 @@
+/* form部分 */
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.input-group {
+  display: flex;
+  overflow: hidden;
+  border: 1px solid #80b6f8;
+  border-radius: 8px;
+}
+
+.input-label {
+  width: 120px;
+  text-align: center;
+  background-color: #80b6f8;
+  color: white;
+  padding: 8px 12px;
+  border-right: 1px solid #80b6f8;
+}
+
+.input-field {
+  border: none;
+  padding: 8px 12px;
+  flex: 1;
+  min-width: 200px;
+}
+
+select {
+  width: 224px;
+}
+
+.input-field:focus {
+  outline: none;
+}

@@ -1,0 +1,25 @@
+{% extends 'base/stock_base.html' %}
+<!-- -->
+{% block extra_head %}
+<!-- -->
+{% load static %}
+<link rel="stylesheet" href="{% static 'stock/css/record_form.css' %}" />
+<link rel="stylesheet" href="{% static 'stock/css/record_detail.css' %}" />
+{% endblock %}
+
+{% block body %}
+<div class="card">
+  <p>下記データを削除します。</p>
+  <p><strong>タイトル:</strong> {{ record.title }}</p>
+  <p><strong>作成日:</strong> {{ record.created_at }}</p>
+  <p><strong>コード:</strong> {{ record.code }}</p>
+  <p><strong>株式名:</strong> {{ record.stock_name }}</p>
+
+  <form method="POST">
+    {% csrf_token %}
+    <button class="button delete" type="submit">削除する</button>
+    <a class="custom-button" href="{% url 'stock:record_detail' record.id %}">戻る</a>
+  </form>
+</div>
+
+{% endblock %}
