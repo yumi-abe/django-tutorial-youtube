@@ -4,7 +4,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.urls import reverse_lazy
 from datetime import datetime
 from .models import StockInfo, Calendar, Record
-from .forms import CalcForm
+from .forms import CalcForm, RecordForm
 from .views_operations.stock_search import stock_search
 from .views_operations.get_stockInfo import GetStockInfo
 from .views_operations.CrossTradeCalculator import CrossTradeCaluculator
@@ -128,13 +128,13 @@ class RecordDetailView(DetailView):
 class RecordCreateView(CreateView):
     model = Record
     template_name = 'stock/record_form.html'
-    fields = '__all__'
+    form_class = RecordForm
     success_url = reverse_lazy('stock:record')
 
 class RecordUpdateView(UpdateView):
     model = Record
     template_name = 'stock/record_form.html'
-    fields = '__all__'
+    form_class = RecordForm
     success_url = reverse_lazy('stock:record')
 
 class RecordDeleteView(DeleteView):

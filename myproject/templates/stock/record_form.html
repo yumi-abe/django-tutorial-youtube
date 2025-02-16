@@ -1,11 +1,113 @@
 {% extends 'base/stock_base.html' %}
-<!---->
+<!-- -->
+{% block extra_head %}
+<!-- -->
+{% load static %}
+<link rel="stylesheet" href="{% static 'stock/css/record_form.css' %}" />
+{% endblock %}
+<!-- -->
 {% block body %}
 <h1>新規投稿</h1>
 <form method="post">
-  {% csrf_token %} {{ form.as_p }}
-  <button type="submit">投稿</button>
-  <a href="{% url 'stock:record' %}">戻る</a>
+  {% csrf_token %}
+
+  <div class="form-container">
+    <div class="form-row">
+      <div class="input-group">
+        <label for="id_title" class="input-label">タイトル</label>
+        {{ form.title }}
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="input-group">
+        <label for="id_get_date" class="input-label">取得日</label>
+        {{ form.get_date }}
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="input-group">
+      <label for="id_label" class="input-label">ラベル</label>
+      {{ form.label }}
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="input-group">
+      <label for="id_code" class="input-label">銘柄コード</label>
+      {{ form.code }}
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="input-group">
+      <label for="id_stock_name" class="input-label">銘柄名</label>
+      {{ form.stock_name }}
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="input-group">
+      <label for="id_get_month" class="input-label">優待月</label>
+      {{ form.get_month }}
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="input-group">
+      <label for="id_quantity" class="input-label">株数</label>
+      {{ form.quantity }}
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="input-group">
+      <label for="id_stock_price" class="input-label">株価</label>
+      {{ form.stock_price }}
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="input-group">
+      <label for="id_fee" class="input-label">手数料</label>
+      {{ form.fee }}
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="input-group">
+      <label for="id_category" class="input-label">優待カテゴリ</label>
+      {{ form.category }}
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="input-group">
+      <label for="id_detail" class="input-label">優待内容</label>
+      {{ form.detail }}
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="input-group">
+      <label for="id_arrival_date" class="input-label">優待到着日</label>
+      {{ form.arrival_date }}
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="input-group">
+      <label for="id_timing" class="input-label">取得タイミング</label>
+      {{ form.timing }}
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="input-group">
+      <label for="id_rank" class="input-label">ランク</label>
+      {{ form.rank }}
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="input-group">
+      <label for="id_memo" class="input-label">メモ</label>
+      {{ form.memo }}
+    </div>
+  </div>
+
+  <button class="button" type="submit">記録する</button>
+  <a class="custom-button" href="{% url 'stock:record' %}">戻る</a>
 </form>
 
 {% endblock %}

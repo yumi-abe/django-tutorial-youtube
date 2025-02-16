@@ -1,14 +1,54 @@
 {% extends 'base/stock_base.html' %}
 <!---->
 {% block body %}
-<h1>記録一覧</h1>
-<ul>
-  {% for record in records %}
-  <li>
-    <a href="{% url 'stock:record_detail' record.id %}">{{ record.title }}</a>
-  </li>
-  {% endfor %}
-</ul>
-<a href="{% url 'stock:record_create' %}">記録する</a>
+<div class="record">
+  <h1 class="record-title">記録一覧</h1>
+  <div class="record-button">
+    <a class="button" href="{% url 'stock:record_create' %}">記録する</a>
+  </div>
+
+  <ul class="record-list">
+    {% for record in records %}
+    <li class="record-item">
+      <a class="record-link" href="{% url 'stock:record_detail' record.id %}">
+        <div class="record-container">
+          <div class="record-icon">
+            {% if record.category == 1 %}
+            <p><i class="fa-solid fa-utensils"></i></p>
+            {% elif record.category == 2 %}
+            <p><i class="fa-solid fa-shop"></i></p>
+            {% elif record.category == 3 %}
+            <p><i class="fa-solid fa-money-bill-1"></i></p>
+            {% elif record.category == 4 %}
+            <p><i class="fa-solid fa-gift"></i></p>
+            {% elif record.category == 9 %}
+            <p><i class="fa-regular fa-clipboard"></i></p>
+            {% endif %}
+          </div>
+          <div class="record-content">
+            <p>{{ record.title }}</p>
+            <p>
+              <i class="fa-regular fa-calendar"></i>
+              <span class="label">投稿日</span
+              ><span class="value">{{ record.updated_at }}</span>
+            </p>
+            <p>
+              <i class="fa-solid fa-tag"></i> <span class="label">銘柄名</span
+              ><span class="value">{{ record.stock_name }}</span>
+            </p>
+            {% if not record.detail == None %}
+            <p>
+              <i class="fa-solid fa-gift"></i>
+              <span class="label">優待内容</span
+              ><span class="value">{{ record.detail }}</span>
+            </p>
+            {% endif %}
+          </div>
+        </div>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
 
 {% endblock %}

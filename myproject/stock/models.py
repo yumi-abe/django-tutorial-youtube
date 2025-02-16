@@ -57,6 +57,7 @@ class Record(models.Model):
         ),
         verbose_name="優待カテゴリ"
     )
+    detail = models.CharField(max_length=100, verbose_name="優待内容", blank=True, null=True)
     arrival_date = models.DateField(verbose_name="優待到着日", blank=True, null=True)
     timing = models.PositiveSmallIntegerField(
         choices=(

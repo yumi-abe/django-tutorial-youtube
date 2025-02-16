@@ -1,17 +1,48 @@
 {% extends 'base/stock_base.html' %}
-<!---->
+<!-- -->
+{% block extra_head %}
+<!-- -->
+{% load static %}
+<link rel="stylesheet" href="{% static 'stock/css/record_form.css' %}" />
+<link rel="stylesheet" href="{% static 'stock/css/record_detail.css' %}" />
+{% endblock %}
+<!-- -->
 {% block body %}
-<h1>記録詳細</h1>
-<h2>{{ record.title }}</h2>
-<p>{{ record.created_at }}</p>
-<p>{{ record.code }}</p>
-<p>{{ record.stock_name }}</p>
-{% if record.timing == 1 %}
-<p>早い</p>
-{% elif record.timing == 2 %}
-<p>遅い</p>
-{% endif %}
-<a href="{% url 'stock:record_edit' record.id %}">編集</a>
-<a href="{% url 'stock:record_delete' record.id %}">削除</a>
-<a href="{% url 'stock:record' %}">戻る</a>
+<div class="card">
+  <div class="record-header">
+    <h2 class="record-title">{{ record.title }}</h2>
+    <p class="record-created">作成日：{{ record.created_at }}</p>
+  </div>
+
+  <p class="stock-info">{{ record.stock_name }}（{{ record.code }}）</p>
+<div class="record-info">
+  <p><i class="fas fa-calendar-alt"></i><strong> 権利月：</strong>{{ record.get_month }}月</p>
+  <p><i class="fas fa-calendar-check"></i><strong> 取得日：</strong>{{ record.get_date }}</p>
+  <p><i class="fas fa-money-bill-wave"></i><strong> 手数料：</strong>{{ record.fee }}</p>
+
+  <p><i class="fas fa-tag"></i><strong> カテゴリ：</strong>{{ record.category }}</p>
+  <p><i class="fas fa-gift"></i><strong> 優待内容：</strong>{{ record.detail }}</p>
+  <p><i class="fas fa-truck"></i><strong> 到着日：</strong>{{ record.arrival_date }}</p>
+  <p>
+    <i class="fa-regular fa-clock"></i><strong> タイミング：</strong>
+    {% if record.timing == 1 %}
+    早い
+    {% elif record.timing == 2 %}
+    遅い
+    {% elif record.timing == 3 %}
+    普通
+    {% endif %}
+  </p>
+</div>
+
+<div class="text-center">
+  <a class="button edit mr" href="{% url 'stock:record_edit' record.id %}">編集</a>
+  <a class="custom-button delete" href="{% url 'stock:record_delete' record.id %}">削除</a>
+</div>
+<div class="text-center">
+  <a class="custom-button" href="{% url 'stock:record' %}">戻る</a>
+</div>
+
+</div>
+
 {% endblock %}

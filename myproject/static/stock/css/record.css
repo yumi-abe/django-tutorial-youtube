@@ -1,0 +1,103 @@
+/* 記録一覧 */
+.record-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 20px auto;
+  margin-bottom: 100px;
+  max-width: 700px;
+  font-size: 1.1rem;
+}
+
+.record-item {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.record-item:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-4px);
+}
+
+/* リンクのデザイン */
+.record-link {
+  display: block;
+  padding: 20px;
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.record-link:hover {
+  color: #4e73df;
+}
+
+.record-container {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.record-icon {
+  flex-shrink: 0;
+  background-color: #eef2f7;
+  border-radius: 12px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.record-icon i {
+  color: #4e73df;
+  font-size: 30px;
+}
+
+.record-content {
+  flex-grow: 1;
+}
+
+.record-content p {
+  margin: 0;
+  padding: 5px 0;
+  color: #555;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.record-content p:first-child {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.record-content p span.label {
+  font-weight: bold;
+  color: #888;
+  margin-right: 10px;
+}
+
+.record-button {
+  text-align: right;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 600px) {
+  .record-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .record-icon {
+    margin-bottom: 10px;
+  }
+}
