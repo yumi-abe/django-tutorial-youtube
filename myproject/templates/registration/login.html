@@ -1,7 +1,15 @@
-{% extends 'base/diary_base.html' %} {% block body %}
-<h2>ログイン</h2>
-<form method="post">
-  {% csrf_token %} {{ form.as_p }}
-  <button type="submit">ログイン</button>
-</form>
+{% extends 'base/stock_base.html' %}
+
+{% block body %}
+  <div class="login-container">
+    <h2 class="login-title">ログイン</h2>
+    <form method="post" class="login-form">
+      {% csrf_token %}
+      <div class="form-field">
+        {{ form.as_p }}
+      </div>
+      <button type="submit" class="button">ログイン</button>
+      <a class="custom-button" href="{% url 'stock:index' %}">TOPページに戻る</a>
+    </form>
+  </div>
 {% endblock %}
