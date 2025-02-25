@@ -88,6 +88,7 @@
 {% if fee %}
 <div class="message">
   <h2>計算結果</h2>
+  <p>必要資金:{{ funds | intcomma  }}円</p>
   <p>保有日数:{{ fee.delta }}日</p>
   <p>信用買手数料：{{ fee.buy_fee }}円</p>
   <p>信用売手数料：{{ fee.sell_fee }}円</p>

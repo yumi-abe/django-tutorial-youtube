@@ -54,6 +54,7 @@ class IndexView(View):
             if form.is_valid():
                 quantity = form.cleaned_data['quantity']
                 price = form.cleaned_data['price']
+                funds = int(price) * int(quantity)
                 date = form.cleaned_data['date']
                 month = form.cleaned_data['get_month']
                 closed_days = self.closed_days()
@@ -62,6 +63,7 @@ class IndexView(View):
                 context = {
                     'quantity': quantity,
                     'price': price,
+                    'funds': funds,
                     'date': date,
                     'month': month,
                     'form': form,
