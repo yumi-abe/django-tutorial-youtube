@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
@@ -53,6 +54,7 @@ class IndexView(View):
             if form.is_valid():
                 quantity = form.cleaned_data['quantity']
                 price = form.cleaned_data['price']
+                funds = int(price) * int(quantity)
                 date = form.cleaned_data['date']
                 month = form.cleaned_data['get_month']
                 closed_days = self.closed_days()
@@ -61,6 +63,7 @@ class IndexView(View):
                 context = {
                     'quantity': quantity,
                     'price': price,
+                    'funds': funds,
                     'date': date,
                     'month': month,
                     'form': form,
@@ -115,29 +118,29 @@ class SettingsView(View):
         return render(request, "stock/settings.html", context)
 
 
-class RecordView(ListView):
+class RecordView(LoginRequiredMixin, ListView):
     model = Record
     template_name = 'stock/record.html'
     context_object_name = 'records'
     
-class RecordDetailView(DetailView):
+class RecordDetailView(LoginRequiredMixin, DetailView):
     model = Record
     template_name = 'stock/record_detail.html'
     context_object_name = 'record'
 
-class RecordCreateView(CreateView):
+class RecordCreateView(LoginRequiredMixin, CreateView):
     model = Record
     template_name = 'stock/record_form.html'
     form_class = RecordForm
     success_url = reverse_lazy('stock:record')
 
-class RecordUpdateView(UpdateView):
+class RecordUpdateView(LoginRequiredMixin, UpdateView):
     model = Record
     template_name = 'stock/record_form.html'
     form_class = RecordForm
     success_url = reverse_lazy('stock:record')
 
-class RecordDeleteView(DeleteView):
+class RecordDeleteView(LoginRequiredMixin, DeleteView):
     model = Record
     template_name = 'stock/record_confirm_delete.html'
     success_url = reverse_lazy('stock:record')

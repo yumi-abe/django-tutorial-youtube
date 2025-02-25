@@ -11,11 +11,78 @@ header {
 
 header a {
   text-decoration: none;
+  color: white;
+}
+
+.login-button {
+  text-decoration: none;
   color: #495ba6;
   padding: 5px 8px;
   background-color: white;
   border-radius: 10px;
+  border: none;
 }
+
+.login-button:hover {
+  background-color: #c2c2c2;
+}
+
+/* ログイン画面のコンテナ */
+.login-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* タイトル */
+.login-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* フォーム内の各フィールドのスタイル */
+.form-field p {
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.form-field input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #333;
+}
+
+/* フォームフィールドのラベルを大きく、わかりやすくする */
+.form-field label {
+  font-weight: bold;
+  color: #333;
+}
+
+/* エラーメッセージの表示スタイル（もしあれば） */
+.form-error {
+  color: #d9534f;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* フォームが画面に対して中央に表示される */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f7fc;
+  margin: 0;
+  padding: 0;
+}
+
 
 /* ボタンのスタイル */
 .button {

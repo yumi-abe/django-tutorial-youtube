@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>MyApp</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'stock/css/base.css' %}" />
     <link rel="stylesheet" href="{% static 'stock/css/index.css' %}" />
@@ -19,8 +19,17 @@
   </head>
   <body>
     <header>
-      <div>My App</div>
-      <div><a href="#">Login</a></div>
+      <div><a href="{% url 'stock:index' %}">My App</a></div>
+      <div>
+        {% if user.is_authenticated %}
+      <form action="{% url 'accounts:logout' %}" method="POST">
+        {% csrf_token %}
+        <button class="login-button" type="submit">ログアウト</button>
+      </form>
+      {% else %}
+      <a class="custom-button" href="{% url 'login' %}">ログイン</a>
+      {% endif %}
+      </div>
     </header>
     {% block body %}
     <!---->
